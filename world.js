@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lookupBtn = document.getElementById('lookup');
     const citiesBtn = document.getElementById('cities');
 
+    // Sends the AJAX request and renders the returned HTML
     async function fetchData(params) {
         const query = new URLSearchParams(params).toString();
         result.innerHTML = '<p class="status">Loading...</p>';
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchData({ country: input.value.trim() });
     });
 
+    // Same search, but asks world.php for cities instead
     if (citiesBtn) {
         citiesBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Pressing Enter triggers a country lookup
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             lookupBtn.click();

@@ -1,9 +1,11 @@
 <?php
+// Database connection settings
 $host = 'localhost';
 $username = 'lab5_user';
 $password = 'password123';
 $dbname = 'world';
 
+// Escapes output for safe HTML display (also handles NULL values)
 function h($value) {
     return htmlspecialchars((string) ($value ?? ''), ENT_QUOTES, 'UTF-8');
 }
@@ -17,11 +19,13 @@ try {
     exit;
 }
 
+// Read GET parameters; an empty country matches everything
 $country = isset($_GET['country']) ? trim($_GET['country']) : '';
 $lookup  = isset($_GET['lookup']) ? $_GET['lookup'] : '';
 $search  = "%$country%";
 
 if ($lookup === 'cities') {
+    // Join cities to countries so we can search by country name
     $stmt = $conn->prepare("SELECT c.name, c.district, c.population
                             FROM cities c
                             JOIN countries cs ON c.country_code = cs.code
@@ -30,6 +34,7 @@ if ($lookup === 'cities') {
     $stmt->execute([':country' => $search]);
     $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
+    // Prepared statement guards against SQL injection
     $stmt = $conn->prepare("SELECT name, continent, independence_year, head_of_state
                             FROM countries
                             WHERE name LIKE :country");

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
         <meta charset="utf-8">
-		<meta name = "viewport" content = "width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>World Database Lookup</title>
 
-		<!-- you can modify this as needed or to your preference -->
+		<!-- ?v= forces the browser to load the latest stylesheet -->
 		<link href="world.css?v=2" type="text/css" rel="stylesheet" />
-
-		<!-- you write this -->
 		<script src="world.js" type="text/javascript" defer></script>
 	</head>
 
@@ -25,13 +23,10 @@
 					<button id="lookup">Lookup</button>
 					<button id="cities">Lookup Cities</button>
 				</div>
-				
 			</div>
-			
-			<div id="result">
-				<!-- countries will appear here -->
-			</div>
-		</main>
 
+			<!-- Results from world.php are inserted here -->
+			<div id="result"></div>
+		</main>
 	</body>
 </html>

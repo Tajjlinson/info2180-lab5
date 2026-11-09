@@ -1,3 +1,4 @@
+/* Color palette */
 :root {
   --header-bg: #4a5568;
   --page-bg: #f4f6f8;
@@ -37,6 +38,7 @@ main {
   padding: 0 1rem;
 }
 
+/* Search input and buttons */
 .controls {
   display: flex;
   flex-direction: column;
@@ -77,6 +79,7 @@ button {
 button#cities { background: var(--blue); }
 button:hover { opacity: 0.9; }
 
+/* Results table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -96,8 +99,10 @@ th {
   text-align: center;
 }
 
+/* Striped rows for readability */
 tbody tr:nth-child(even) { background: var(--page-bg); }
 
+/* Loading, empty and error messages */
 .status, .error {
   text-align: center;
   color: var(--muted);
